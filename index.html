@@ -184,12 +184,12 @@ section[id]{scroll-margin-top:84px}
 .svc-opt input:focus-visible+.card{outline:2px solid var(--a1);outline-offset:3px}
 .svc-opt .ico{width:36px;height:36px;color:var(--a2)}
 .svc-opt .t{font-size:14px;font-weight:600;line-height:1.25}
-.field{position:relative}
+.field{position:relative!important}
 .field input,.field textarea{width:100%;min-height:58px;padding:24px 16px 8px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--text);font-size:16px;transition:border-color .3s,background .3s;color-scheme:dark}
 .field textarea{min-height:110px;resize:vertical}
 .field label{position:absolute;left:17px;top:18px;font-size:15px;color:#8f8f99;pointer-events:none;transition:all .25s var(--ease);transform-origin:left top}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--a2);background:rgba(var(--rgb),.05);box-shadow:0 0 0 3px rgba(var(--rgb),.15)}
-.field input:focus+label,.field input:not(:placeholder-shown)+label,.field textarea:focus+label,.field textarea:not(:placeholder-shown)+label,.field.fixed label{top:8px;font-size:11.5px;letter-spacing:.06em;color:var(--a1)}
+.field input:focus+label,.field input:not(:placeholder-shown)+label,.field textarea:focus+label,.field textarea:not(:placeholder-shown)+label,.field.lbl-up label{top:8px;font-size:11.5px;letter-spacing:.06em;color:var(--a1)}
 .reveal-row{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
 .reveal-row.open{grid-template-rows:1fr}
 .reveal-row>div{overflow:hidden}
@@ -301,6 +301,12 @@ section[id]{scroll-margin-top:84px}
   .band .btn{width:100%}
 }
 @media(max-width:340px){.nav .btn-sm{display:none}}
+
+
+.time-set{min-width:0;border:0;padding:0;margin:0}
+#slots{min-width:0}
+.field input[type=date]{min-width:0;display:block;-webkit-appearance:none;appearance:none}
+.field input[type=date]::-webkit-date-and-time-value{text-align:left}
 
 /* Reduced motion: everything stays visible, nothing animates */
 @media (prefers-reduced-motion: reduce){
@@ -714,10 +720,10 @@ section[id]{scroll-margin-top:84px}
           <div><div class="field mt-3"><input id="addr" name="addr" type="text" placeholder=" " autocomplete="street-address" disabled><label for="addr">Where is the vehicle? (address or cross streets)</label></div></div>
         </div>
 
-        <div class="grid sm:grid-cols-[0.8fr_1.2fr] gap-3 mt-7 items-start">
-          <div class="field fixed"><input id="date" name="date" type="date" placeholder=" "><label for="date">Preferred date</label></div>
-          <fieldset>
-            <legend class="sr-only">Preferred time</legend>
+        <div class="grid gap-4 mt-7">
+          <div class="field lbl-up"><input id="date" name="date" type="date" placeholder=" "><label for="date">Preferred date</label></div>
+          <fieldset class="time-set">
+            <legend class="text-[12px] tracking-[.14em] uppercase text-[#9d9da6] mb-3">Preferred time</legend>
             <div class="flex flex-wrap gap-2" id="slots">
               <label class="pill"><input type="radio" name="slot" value="ASAP"><span>ASAP</span></label>
               <label class="pill"><input type="radio" name="slot" value="Morning"><span>Morning</span></label>
